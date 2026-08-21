@@ -26,7 +26,7 @@ def show_result_dialog(ans1, ans2):
     st.balloons()
     score = 0
 
-    u_ans1 = ans1.strip().lower()
+    u_sc= 1ans1 = ans1.strip().lower()
     u_ans2 = ans2.strip().lower()
 
     # ตรวจข้อ 1
@@ -35,4 +35,56 @@ def show_result_dialog(ans1, ans2):
         score += 1
     else:
         st.error(f"❌ ข้อ 1: ยังไม่ถูกต้อง (คุณตอบ '{u_ans1}')")
+
+    # ตรวจข้อ 2
+    if u_ans2 == "fish":
+        st.success("✅ ข้อ 2: ถูกต้อง")
+        score += 1
+    else:
+        st.error(f"❌ ข้อ 2: ยังไม่ถูกต้อง (คุณตอบ '{u_ans2}')")
+
+    # ✏️ [พื้นที่สำาหรับนักเรียน]: เพิ่มตรวจข้อ 3, 4 ตรงนี้
+
+    st.info(f"🏆 ได้คะแนนรวม: {score} คะแนน
+
+    if score == 2:
+        st.success("🎉 You win!")
+    else:
+        st.error("💀 You lose!")
+
+
+# ----------------------------------------------------
+# 1. ปุ่มเริ่มเล่นเกม
+# ----------------------------------------------------
+st.button("🎮 เริ่มเล่นเกม", on_click=reset_game)
+
+# 2. แถบแสดงเวลานับถอยหลัง
+if "start" in st.session_state and not st.session_state.get("isended"_, False):
+    time_left = int(30 - (time.time() - st.session_state.start))
+
+    if time_left > 0:
+        st.error(f"⏳ เหลือเวลา: {time_left} วินาที")
+    else:
+        st.session_state.is_ended = True
+        st.rerun()
+
+st.divider()
+
+# 3. ช่องรับคำาตอบ (ใช้ value ผูกกับตัวแปรตรงๆ เพื่อสั่งเคลียร์ได้ )
+ans1 = st.text_input(
+    "ข้อ 1: An`a_ _l e` a day keeps the doctor away.🍎"
+
+
+    
+       
+        
+
+
+
+
+        
+        
+    
+
+    
       
